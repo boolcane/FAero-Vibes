@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAero Vibe</title>
+  <link rel="stylesheet" href="style.css" />
+   <link rel="icon" href="./assets/bigfish.png" type="image/x-icon">
+  <script src="script.js"></script>
+  <style>
+    #player {
+      position: absolute;
+      top: -1000px;
+      left: -1000px;
+      width: 1px;
+      height: 1px;
+    }
+    /* Stile semplice per i bottoni */
+    button {
+      margin: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="player"></div>
+
+  <button id="muteBtn" onclick="muteAudio()">Mute</button>
+  <button id="unmuteBtn" onclick="unmuteAudio()">Unmute</button>
+  <a href="https://www.youtube.com/live/HuOHu5XSTSk?si=iAlR3zMeWSoz67K4">Original music live</a>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '1',
+        width: '1',
+        videoId: 'HuOHu5XSTSk',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0,
+          mute: 1,
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo();
+          }
+        }
+      });
+    }
+
+    function muteAudio() {
+      if(player && player.isMuted && !player.isMuted()) {
+        player.mute();
+      }
+    }
+
+    function unmuteAudio() {
+      if(player && player.isMuted && player.isMuted()) {
+        player.unMute();
+      }
+    }
+  </script>
+
+</body>
+</html>
