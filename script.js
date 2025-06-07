@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fishSize = 250;
   const fishes = [];
 
-  // Funzione per creare un pesce generico e aggiungerlo all'array
+ 
   function createFish(src) {
     let fish = document.createElement("img");
     fish.src = src;
@@ -25,12 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Creo 5 pesci piccoli
+  
   for (let i = 0; i < 5; i++) {
     fishes.push(createFish("./assets/fishy.png"));
   }
 
-  // Creo biggy, il pesce grande
+  
   fishes.push(createFish("./assets/bigfish.png"));
 
   function animate(time = 0) {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fish.x += fish.vx;
       fish.y = fish.baseY + Math.sin(time * 0.005 + fish.phase) * 10;
 
-      // Inversione direzione e flip immagine
+     
       if (fish.x <= 0) {
         fish.x = 0;
         fish.vx *= -1;
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fish.el.style.transform = "scaleX(-1)";
       }
 
-      // Limita movimento verticale (opzionale, puoi migliorare)
+     
       if (fish.y < 0) fish.y = 0;
       if (fish.y > window.innerHeight - fishSize) fish.y = window.innerHeight - fishSize;
 
